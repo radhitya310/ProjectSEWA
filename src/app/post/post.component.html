@@ -1,0 +1,395 @@
+<div id="postPage" *ngIf="!showNotFound">
+    <div class="app-content container center-layout mt-2">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-8 col-sm-12 pr-0">
+                    <div class="card mb-1">
+                        <div class="card-header">
+                            <span class="card-title" ID="lblSubject">{{resPostGetLayout[0].PostTitle}}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <div *ngFor="let post of resPostGetLayout">
+                                            <div *ngFor="let postImgUrl of post.ImgUrl;let i = index">
+                                                <li data-target="#carousel-example-generic" data-slide-to="i" class="">
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div *ngFor="let post of resPostGetLayout">
+                                            <div *ngFor="let postImgUrl of post.ImgUrl;let i = index">
+                                                <div class="carousel-item active" *ngIf="i == 0">
+                                                    <img class="img-post" src="{{postImgUrl}}" alt="Post Image">
+                                                </div>
+                                                <div class="carousel-item" *ngIf="i != 0">
+                                                    <img class="img-post" src="{{postImgUrl}}" alt="Post Image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carousel-example-generic" role="button"
+                                        data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carousel-example-generic" role="button"
+                                        data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-1">
+                        <div class="card-header pb-0">
+                            <ul class="list-inline mb-1">
+                                <li>
+                                    <span class="card-title">Deskripsi</span>
+                                </li>
+                                <a href="#" class="float-right">
+                                    <li style="padding-right: 2px">
+                                        <span class="fa fa-share"></span>
+                                    </li>
+                                    <li class="pr-1">Share</li>
+                                </a>
+                                <a class="float-right" (click)="likePost('1')">
+                                    <li style="padding-right: 2px">
+                                        <i class="fa animate" [ngClass]="isPostLiked ? 'fa-heart' : 'fa-heart-o'"></i>
+                                    </li>
+                                    <li class="pr-1"> {{resPostGetLayout[0].Likes}} Likes</li>
+                                </a>
+
+                            </ul>
+
+                        </div>
+                        <div class="card-body pt-0">
+                            <span ID="lblDesc">{{resPostGetLayout[0].PostDescription}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card mb-1">
+                                <div class="card-header">
+                                    <label CssClass="card-title" ID="lblCardTitle">Profil yang
+                                        Mencari</label>
+                                </div>
+                                <div class="text-center">
+                                    <a routerLink="/p/{{resPostGetLayout[0].Username}}"
+                                        href="/p/{{resPostGetLayout[0].Username}}" itemprop="contentUrl"
+                                        style="height: 100%">
+                                        <div class="card-body">
+                                            <img src="{{resPostGetLayout[0].UrlProfilePicture}}"
+                                                class="rounded-circle  height-150" alt="Card image" id="imgProfile">
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <span ID="lblUserName">{{resPostGetLayout[0].FullName}}</span>
+                                            </h4>
+                                            <h6 class="card-subtitle text-muted">{{resPostGetLayout[0].Bio}}</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card mb-1">
+                                <div class="card-header">
+                                    <label CssClass="card-title" ID="Label1">Lokasi Terakhir
+                                    </label>
+                                </div>
+                                <div class="text-center">
+                                    <img class="card-img img-fluid mb-1" src="../../../assets/images/gsmarena_004.jpg"
+                                        alt="Map">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-1">Kontak yang bisa dihubungi</h4>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 mb-1">
+                                            <div class="form-group">
+                                                <!-- Social Buttons block size-->
+                                                <a href="#" class="btn btn-social btn-block mb-1 btn-facebook"><i
+                                                        class="fa fa-facebook"></i>Rocitha</a>
+                                                <a href="#" class="btn btn-social btn-block mb-1 btn-twitter"><span
+                                                        class="fa fa-twitter"></span>Rocitha</a>
+                                                <a href="#" class="btn btn-social btn-block mb-1 btn-instagram"><span
+                                                        class="fa fa-instagram"></span>Rocitha</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-content">
+            <div class="card-footer px-0 py-0">
+                <div class="card-body pb-0">
+                    <div class="spinnerContainer">
+                        <div class="text-center">
+                            <i class="fa fa-repeat spinner" id="sectionLoading" *ngIf="isCreateComment"></i>
+                        </div>
+                    </div>
+                    <div class="media" id="sectionReply" *ngIf="isLogin && !isCreateComment">
+                        <div class="media-left mr-1">
+                            <a routerLink="/p/{{userData.Username}}" href="/p/{{userData.Username}}">
+                                <span class="avatar avatar-online">
+                                    <img src="{{userData.UrlProfilePicture}}" alt="avatar"
+                                        id="imgProfileComment"></span>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <fieldset class="form-group position-relative mb-0">
+                                <textarea autosize [(ngModel)]="text" style="width: 100%;"></textarea>
+                                <!-- <textarea oninput="auto_grow(this)"></textarea> -->
+                                <!-- <input type="text" class="form-control" placeholder="Write comments..."> -->
+                            </fieldset>
+                            <ul class="list-inline mb-0">
+                                <li class="float-right">
+                                    <button class="btn btn-success square btn-min-width mb-1 mt-1"
+                                        (click)="createComment(true)">
+                                        Post
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="media" *ngIf="!isLogin">
+                        Log in or sign up to leave a comment
+                    </div>
+                </div>
+                <hr />
+                <div class="card-body pb-0 pt-1">                    
+                    <div class="media mb-1" *ngFor="let comment of resPostCommentLayout; let i = index">                        
+                        <div class="media-left mr-1">
+                            <a routerLink="/p/{{comment.Username}}" href="/p/{{comment.Username}}">
+                                <span class="avatar avatar-online">
+                                    <img src="{{comment.UrlProfilePicture}}" alt="avatar"></span>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <ul class="list-inline m-0">
+                                <li style="padding-right: 2px">
+                                    <p class="text-bold-600 mb-0">
+                                        <a routerLink="/p/{{comment.Username}}" href="/p/{{comment.Username}}">
+                                            <span class="fullname">
+                                                {{comment.FullName}}
+                                            </span>
+                                        </a>
+                                    </p>
+                                </li>
+                                <li class="font-size-small">
+                                    {{comment.CommentTimestamp}}
+                                </li>
+                            </ul>
+                            <!-- <pre class="comment">{{text}}</pre> -->
+                            <p [style.white-space]="'pre-wrap'" class="comment">{{comment.Comment}}
+                            </p>
+                            <ul class="list-inline mb-0">
+                                <li style="padding-right: 2px">
+                                    <a ID="lbLike" OnClick="lbLike_Click"><span class="fa fa-thumbs-o-up"></span></a>
+                                </li>
+                                <li class="pr-1">
+                                    {{comment.TotalLikes}}
+                                </li>
+                                <a ID="lbReply">
+                                    <li class="pr-1" (click)="comment.isReply = true">Reply</li>
+                                </a>
+                            </ul>
+                            <div class="spinnerContainer">
+                                <div class="text-center">
+                                    <i class="fa fa-repeat spinner" *ngIf="comment.isCreateComment"></i>
+                                </div>
+                            </div>
+                            <div class="media" [hidden]="!comment.isReply">                                
+                                <div class="media-left mr-1">
+                                    <a routerLink="/p/{{userData.Username}}" href="/p/{{userData.Username}}">
+                                        <span class="avatar avatar-online">
+                                            <img src="{{userData.UrlProfilePicture}}" alt="avatar"></span>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <fieldset class="form-group position-relative mb-0">
+                                        <textarea autosize [(ngModel)]="comment.CommentReply" style="width: 100%;"
+                                            placeholder="Write comments..."></textarea>
+                                        <!-- <input type="text" class="form-control" placeholder="Write comments..."> -->
+                                    </fieldset>
+                                    <ul class="list-inline mb-0">
+                                        <li class="float-right">
+                                            <button type="button" class="btn btn-success square btn-min-width mb-1 mt-1"
+                                                (click)="createComment(false, i)">REPLY</button>
+                                        </li>
+                                        <li class="float-right">
+                                            <button class="btn btn-outline-danger square btn-min-width mr-1 mb-1 mt-1"
+                                                (click)="comment.isReply = false">CANCEL
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a *ngIf="comment.TotalReply > 0" (click)="getReplyComment(i,comment.TCommentId)">
+                                <span class="fa animate"
+                                    [ngClass]="comment.isSeeReplyComment ? 'fa-caret-up' : 'fa-caret-down'"> Lihat
+                                    {{comment.TotalReply}} Balasan</span>
+                            </a>
+
+                            <div class="mt-1" *ngIf="comment.isSeeReplyComment">
+                                <div class="media"
+                                    *ngFor="let replyComment of comment.PostReplyComment; let iSub = index">
+                                    <div class="media-left mr-1">
+                                        <a routerLink="/p/{{replyComment.Username}}"
+                                            href="/p/{{replyComment.Username}}">
+                                            <span class="avatar avatar-online">
+                                                <img src="{{replyComment.UrlProfilePicture}}" alt="avatar"></span>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <ul class="list-inline m-0">
+                                            <li style="padding-right: 2px">
+                                                <p class="text-bold-600 mb-0">
+                                                    <a routerLink="/p/{{replyComment.Username}}"
+                                                        href="/p/{{replyComment.Username}}">
+                                                        <span class="fullname">
+                                                            {{replyComment.FullName}}
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                            <li class="font-size-small">
+                                                {{replyComment.CommentTimestamp}}
+                                            </li>
+                                        </ul>
+                                        <!-- <pre class="comment">{{text}}</pre> -->
+                                        <p [style.white-space]="'pre-wrap'" class="comment">{{replyComment.Comment}}
+                                        </p>
+                                        <ul class="list-inline mb-1">
+                                            <li style="padding-right: 2px">
+                                                <a ID="lbLike" OnClick="lbLike_Click"><span
+                                                        class="fa fa-thumbs-o-up"></span></a>
+                                            </li>
+                                            <li class="pr-1">
+                                                {{replyComment.TotalLikes}}
+                                            </li>
+                                            <a ID="lbReply">
+                                                <li class="pr-1" (click)="replyComment.isReply = true">Reply</li>
+                                            </a>
+                                        </ul>
+                                        <div class="spinnerContainer">
+                                            <div class="text-center">
+                                                <i class="fa fa-repeat spinner" *ngIf="replyComment.isCreateComment"></i>
+                                            </div>
+                                        </div>
+                                        <div class="media" [hidden]="!replyComment.isReply">
+                                            <div class="media-left mr-1">
+                                                <a routerLink="/p/{{userData.Username}}"
+                                                    href="/p/{{userData.Username}}">
+                                                    <span class="avatar avatar-online">
+                                                        <img src="{{userData.UrlProfilePicture}}" alt="avatar"></span>
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <fieldset class="form-group position-relative mb-0">
+                                                    <textarea autosize [(ngModel)]="replyComment.CommentReply"
+                                                        style="width: 100%;" placeholder="Write comments..."></textarea>
+                                                    <!-- <input type="text" class="form-control" placeholder="Write comments..."> -->
+                                                </fieldset>
+                                                <ul class="list-inline mb-0">
+                                                    <li class="float-right">
+                                                        <button type="button"
+                                                            class="btn btn-success square btn-min-width mb-1 mt-1"
+                                                            (click)="createComment(false, i, iSub, true)">REPLY</button>
+                                                    </li>
+                                                    <li class="float-right">
+                                                        <button
+                                                            class="btn btn-outline-danger square btn-min-width mr-1 mb-1 mt-1"
+                                                            (click)="replyComment.isReply = false">CANCEL
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content container center-layout mt-2" id="notFound" *ngIf="showNotFound">
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <section class="flexbox-container">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="col-md-4 col-10 p-0">
+                        <div class="card-header bg-transparent border-0">
+                            <h2 class="error-code text-center mb-2">404</h2>
+                            <h3 class="text-uppercase text-center">Page Not Found !</h3>
+                        </div>
+                        <div class="card-content">
+                            <fieldset class="row py-2">
+                                <div class="input-group col-12">
+                                    <input type="text"
+                                        class="form-control form-control-xl input-xl border-grey border-lighten-1 "
+                                        placeholder="Search..." aria-describedby="button-addon2">
+                                    <span class="input-group-append" id="button-addon2">
+                                        <button class="btn btn-lg btn-secondary border-grey border-lighten-1"
+                                            type="button"><i class="ft-search"></i></button>
+                                    </span>
+                                </div>
+                            </fieldset>
+                            <div class="row py-2">
+                                <div class="col-12 col-sm-6 col-md-6">
+                                    <a href="index.html" class="btn btn-primary btn-block"><i class="ft-home"></i>Back
+                                        to Home</a>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6">
+                                    <a href="search-website.html" class="btn btn-danger btn-block"><i
+                                            class="ft-search"></i>Advanced search</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="row">
+                                <p class="text-muted text-center col-12 py-1">© 2016 <a href="#">Stack
+                                    </a>Crafted with <i class="ft-heart pink"></i>by <a
+                                        href="http://themeforest.net/user/pixinvent/portfolio"
+                                        target="_blank">PIXINVENT</a></p>
+                                <div class="col-12 text-center">
+                                    <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-facebook"><span
+                                            class="fa fa-facebook"></span></a>
+                                    <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-twitter"><span
+                                            class="fa fa-twitter"></span></a>
+                                    <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-linkedin"><span
+                                            class="fa fa-linkedin font-medium-4"></span></a>
+                                    <a href="#" class="btn btn-social-icon mr-1 mb-1 btn-outline-github"><span
+                                            class="fa fa-github font-medium-4"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////-->
